@@ -27,3 +27,30 @@ def hasDuplicate(nums) -> bool:
 - Time complexity: O ( n 2 )
 - Space complexity: O(1)
 ---
+## 2. Sorting
+### Intuition
+If we sort the array, then any duplicate values will appear next to each other.
+Sorting groups identical elements together, so we can simply check adjacent positions to detect duplicates.
+This reduces the problem to a single linear scan after sorting, making it easy to identify if any value repeats.
+
+### Algorithm
+Sort the array in non-decreasing order.
+Iterate through the array starting from index 1.
+Compare the current element with the previous element.
+If both elements are equal, we have found a duplicate — return true.
+If the loop finishes without detecting equal neighbors, return false.
+
+```python
+nums = [1, 2, 3, 4]
+
+def hasDuplicate(nums):
+    nums.sort()
+    for i in range(1, len(nums)):
+        if nums[i] == nums[i - 1]:
+            return True
+    return False
+```
+### Time & Space Complexity
+- Time complexity: O ( n log n )
+- Space complexity: O(1) or O(n) depending on the sorting algorithm.
+---
