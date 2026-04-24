@@ -54,3 +54,37 @@ def hasDuplicate(nums):
 - Time complexity: O ( n log n )
 - Space complexity: O(1) or O(n) depending on the sorting algorithm.
 ---
+## Hash Set
+
+### Intuition
+We can use a hash set to efficiently keep track of the values we have already encountered.
+As we iterate through the array, we check whether the current value is already present in the set.
+If it is, that means we've seen this value before, so a duplicate exists.
+Using a hash set allows constant-time lookups, making this approach much more efficient than comparing every pair.
+
+### Algorithm
+Initialize an empty hash set to store seen values.
+Iterate through each number in the array.
+For each number:
+If it is already in the set, return true because a duplicate has been found.
+Otherwise, add it to the set.
+If the loop finishes without finding any duplicates, return false.
+
+```python
+nums = [1, 2, 3, 4, 5]
+
+def hasDuplicate(nums):
+    seen = set()
+
+    for num in nums:
+        if num in seen:
+            return True
+        seen.add(num)
+    return False
+```
+
+### Time & Space Complexity
+- Time complexity: O (n)
+- Space complexity: O(n)
+---
+
