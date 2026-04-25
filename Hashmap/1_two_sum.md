@@ -127,3 +127,34 @@ def twoSum(nums):
 - Space complexity: O(n)
 ---
 
+## 4. Hash Map (One Pass)
+### Intuition
+We can solve the problem in a single pass by iterating through the array and checking if the complement of the current element exists in the hash map.
+
+If it does, we return the indices of the current element and its complement. If not, we store the current element in the hash map. This guarantees that we will never use the same element twice, but we still check every element in the array.
+
+### Algorithm
+1. Create a hash map to store the value and index of each element in the array.
+2. Iterate through the array using index i and compute the complement of the current element, which is target - nums[i].
+3. Check if the complement exists in the hash map.
+4. If it does, return the indices of the current element and its complement.
+5. If no such pair is found, return an empty array.
+
+```python
+nums = [2, 7, 11, 15]
+target = 9
+
+def twoSum(nums):
+    prevMap = {}
+
+    for i, n in enumerate(nums):
+        diff = target - n
+        if diff in prevMap:
+            return [prevmap[diff], i]
+        prevMap[n] = i
+```
+---
+### Time & Space Complexity
+- Time complexity: O(n)
+- Space complexity: O(n)
+---
