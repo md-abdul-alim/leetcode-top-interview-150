@@ -48,3 +48,45 @@ def twoSum(nums) -> List[int]:
 
 ---
 
+## 2. Sorting
+### Intuition
+We can sort the array and use two pointers to find the two numbers that sum up to the target. This is more efficient than the brute force approach. This approach is similar to the one used in Two Sum II.
+
+### Algorithm
+1. Create a copy of the array and sort it in ascending order.
+2. Initialize two pointers, one at the beginning (i) and one at the end (j) of the array.
+3. Iterate through the array with the two pointers and check if the sum of the two numbers is equal to the target.
+4. If the sum is equal to the target, return the indices of the two numbers.
+5. If the sum is less than the target, move the left pointer i to the right, which will increase the sum.
+6. If the sum is greater than the target, move the right pointer j to the left, which will decrease the sum.
+7. There is guaranteed to be exactly one solution, so we will never return an empty array.
+
+```python
+nums = [2, 7, 11, 15]
+target = 9
+
+def twoSum(nums):
+    A = []
+    for i, num in enumerate(nums):
+        A.append([num, i])
+
+    A.sort()
+    i, j = 0, len(nums) - 1
+
+    while i < j:
+        current = A[i][0] + A[j][0]
+        if current == target:
+            return [min(A[i][1], A[j][1]), max(A[i][1], A[j][1])]
+        elif current < target:
+            i += 1
+        else:
+            j -=1
+    return []
+```
+---
+
+### Time & Space Complexity
+- Time complexity: O (nlogn)
+- Space complexity: O(n)
+---
+
