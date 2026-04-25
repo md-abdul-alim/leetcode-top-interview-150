@@ -90,3 +90,40 @@ def twoSum(nums):
 - Space complexity: O(n)
 ---
 
+## 3. Hash Map (Two Pass)
+### Intuition
+We can use a hash map to store the value and index of each element in the array. Then, we can iterate through the array and check if the complement of the current element exists in the hash map. The complement must be at a different index, because we can't use the same element twice.
+
+By using a hashmap, we can achieve a time complexity of O(n) because the insertion and lookup time of a hashmap is O(1).
+
+### Algorithm
+1. Create a hash map to store the value and index of each element in the array.
+2. Iterate through the array and compute the complement of the current element, which is target - nums[i].
+3. Check if the complement exists in the hash map.
+4. If it does, return the indices of the current element and its complement.
+5. If no such pair is found, return an empty array.
+
+```python
+nums = [2, 7, 11, 15]
+target = 9
+
+def twoSum(nums):
+    indices = {} # val -> index
+
+    for i, n in enumerate(nums):
+        indices[n] = i
+
+    for i, n in enumerate(nums):
+        diff = target - n
+
+        if diff in indices and indices[diff] != i:
+            return [i, indices[diff]]
+
+    return []
+```
+---
+### Time & Space Complexity
+- Time complexity: O(n)
+- Space complexity: O(n)
+---
+
