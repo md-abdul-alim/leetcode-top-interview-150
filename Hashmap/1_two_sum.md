@@ -43,9 +43,9 @@ def twoSum(nums) -> List[int]:
 ```
 
 ### Time & Space Complexity
-- Time complexity: O (n^2)
-- Space complexity: O(1)
-
+- Time complexity: O (n^2) # each number check every each number
+- Space complexity: O(1) # Brute force does NOT use extra memory. not extra data for dict, set, array. Memory stays constant not matter how big the inpute is.
+**Brute force is slow because it checks all pairs
 ---
 
 ## 2. Sorting
@@ -87,7 +87,17 @@ def twoSum(nums):
 
 ### Time & Space Complexity
 - Time complexity: O (nlogn)
+:::Sorting Step: Most built-in sorting algorithms (like Python’s sort()) take: O(nlogn). 👉 This is the dominant cost
+2️⃣ Two pointer scan
+After sorting:
+You scan from both ends
+Each step moves one pointer
+👉 Total work = O(n)
+✅ Total Time: O(nlogn)+O(n)=O(nlogn)
+👉 Sorting dominates, so final = O(n log n)
+
 - Space complexity: O(n)
+:::because A.sort() taking extra memory like the main space nums.
 ---
 
 ## 3. Hash Map (Two Pass)
@@ -110,13 +120,13 @@ target = 9
 def twoSum(nums):
     indices = {} # val -> index
 
-    for i, n in enumerate(nums):
-        indices[n] = i
+    for i, val in enumerate(nums): #O(n)
+        indices[val] = i
 
-    for i, n in enumerate(nums):
-        diff = target - n
+    for i, val in enumerate(nums): #O(n)
+        diff = target - val
 
-        if diff in indices and indices[diff] != i:
+        if diff in indices and indices[diff] != i: # each has map lookup is O(1)
             return [i, indices[diff]]
 
     return []
@@ -124,7 +134,9 @@ def twoSum(nums):
 ---
 ### Time & Space Complexity
 - Time complexity: O(n)
+:::two loop O(n) + O(n) = O(n)
 - Space complexity: O(n)
+::: again hash map stores all n elements. O(n)
 ---
 
 ## 4. Hash Map (One Pass)
@@ -149,7 +161,7 @@ def twoSum(nums):
 
     for i, n in enumerate(nums):
         diff = target - n
-        if diff in prevMap:
+        if diff in prevMap: # O(1)
             return [prevmap[diff], i]
         prevMap[n] = i
 ```
@@ -157,4 +169,6 @@ def twoSum(nums):
 ### Time & Space Complexity
 - Time complexity: O(n)
 - Space complexity: O(n)
+::: n*O(1) = O(n)
+::: You combine lookup + storage in one loop, so you never revisit elements.
 ---
