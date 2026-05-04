@@ -51,10 +51,10 @@ def hasDuplicate(nums):
     return False
 ```
 ### Time & Space Complexity
-- Time complexity: O ( n log n )
+- Time complexity: O ( n log n ) because sorting always take O(n log n)
 - Space complexity: O(1) or O(n) depending on the sorting algorithm.
 ---
-## Hash Set
+## 3. Hash Set
 
 ### Intuition
 We can use a hash set to efficiently keep track of the values we have already encountered.
