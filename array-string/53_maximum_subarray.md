@@ -14,21 +14,6 @@ Given an integer array `nums`, find the contiguous subarray with the highest tot
 
 A subarray must contain at least one element.
 
-### Examples
-
-```txt
-Input: nums = [-1,4,-2,5,-7,3]
-Output: 7
-```
-Explanation: The subarray `[4,-2,5]` gives the maximum sum `7`.
-
-<SubarrayBarsFigure
-  values={[-1, 4, -2, 5, -7, 3]}
-  highlightIndices={[1, 2, 3]}
-  ariaLabel="Maximum subarray visual for first example"
-  className="pt-6"
-/>
-
 ---
 
 ```txt
@@ -94,37 +79,3 @@ class Solution:
 
 - Time: `O(n)`. We visit each element once.
 - Space: `O(1)`. We only keep two running values.
-
-### Logs
-
-```ansi
-Input: nums = [3,-1,2,-1,4,-5,2]
-
-[init] cur_sum=3 max_sum=3
-
-[1] num=-1
-    cur_sum=max(-1,3+(-1))=2
-    max_sum=max(3,2)=3
-
-[2] num=2
-    cur_sum=max(2,2+2)=4
-    max_sum=max(3,4)=4
-
-[3] num=-1
-    cur_sum=max(-1,4+(-1))=3
-    max_sum=max(4,3)=4
-
-[4] num=4
-    cur_sum=max(4,3+4)=7
-    max_sum=max(4,7)=7
-
-[5] num=-5
-    cur_sum=max(-5,7+(-5))=2
-    max_sum=max(7,2)=7
-
-[6] num=2
-    cur_sum=max(2,2+2)=4
-    max_sum=max(7,4)=7
-
-Output: 7
-```

@@ -59,21 +59,6 @@ We can do this in two passes:
 
 This avoids division and uses only constant extra space (not counting output).
 
-<details>
-<summary>Show Diagram</summary>
-
-```mermaid
-flowchart TD
-    A["Start"] --> B["Create ans filled with 1"]
-    B --> C["Pass 1: left to right"]
-    C --> D["ans[i] = product of elements before i"]
-    D --> E["Pass 2: right to left"]
-    E --> F["Multiply ans[i] by product of elements after i"]
-    F --> G["Return ans"]
-```
-
-</details>
-
 ### Code
 
 ```python filename="Python 3"
@@ -101,23 +86,3 @@ class Solution:
 
 - Time: `O(n)`. We scan the array twice.
 - Space: `O(1)`. Extra space is constant (output array is not counted).
-
-### Logs
-
-```ansi
-Input: nums = [2,3,4,5]
-
-Pass 1 (left products):
-i=0 left=1  -> ans=[1,1,1,1], left=2
-i=1 left=2  -> ans=[1,2,1,1], left=6
-i=2 left=6  -> ans=[1,2,6,1], left=24
-i=3 left=24 -> ans=[1,2,6,24], left=120
-
-Pass 2 (right products):
-i=3 right=1  -> ans[3]=24*1=24, ans=[1,2,6,24], right=5
-i=2 right=5  -> ans[2]=6*5=30, ans=[1,2,30,24], right=20
-i=1 right=20 -> ans[1]=2*20=40, ans=[1,40,30,24], right=60
-i=0 right=60 -> ans[0]=1*60=60, ans=[60,40,30,24], right=120
-
-Output: [60,40,30,24]
-```
