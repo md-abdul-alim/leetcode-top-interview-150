@@ -82,7 +82,7 @@ class Solution:
         return ans
 ```
 
-### Complexity
+### Time and space Complexity
 
 - Time: `O(n)`. We scan the array twice.
 - Space: `O(1)`. Extra space is constant (output array is not counted).
